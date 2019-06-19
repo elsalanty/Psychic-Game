@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Psychic Game</title>
+    </head>
+       
+        
+    <body>
+        <h1>The Psychic Game</h1>
+        <h2>Guess what letter I'm thinking of</h2>
+        <h2>Wins: </h2><h2 id=winning>0</h2>
+        <h2>Losses: </h2><h2 id=losing>0</h2>
+        <h2>Guesses Remaining</h2><h2 id=guessing>10</h2>
+        <h2>Your Score</h2><h2 id=scoring>0</h2>
+
+        
+        <script>
+        var wins = 0;
+        var losses = 0;
+        var guesses = 10
+        var score = 0
+
+        document.onkeyup = function(event) {
+                var userChoice = String.fromCharCode(event.keyCode).toLowerCase();
+                alert(userChoice);
+        
+        var computerOptions = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
+
+        var computerChoice = computerOptions[Math.floor(Math.random() * computerOptions.length)];
+
+        if (userChoice === computerChoice) {
+            alert("YOU WIN!!!!");
+            wins = wins + 1;
+            score = score + 10;
+            document.getElementById("winning").innerHTML = wins;
+            document.getElementById("scoring").innerHTML = score;
+        }
+        else {
+            alert("Oops!");
+            losses = losses + 1;
+            guesses = guesses - 1;
+            document.getElementById("losing").innerHTML = losses;
+            document.getElementById("guessing").innerHTML = guesses;
+        }
+        if (guesses == 0) {
+               alert("GAME OVER!!!");
+               alert("Try Again");
+                wins = 0;
+                losses = 0;
+                guesses = 10;
+                score = 0;
+            }
+           
+        }
+        </script>
+    </body>
+</html>
